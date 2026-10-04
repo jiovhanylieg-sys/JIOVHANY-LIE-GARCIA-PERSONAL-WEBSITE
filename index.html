@@ -1,0 +1,1328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Jiovhany Lie Garcia | My Personal Portfolio</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        spideyRed: '#E62429',
+                        spideyRedDark: '#B31217',
+                        spideyBlue: '#0055A5',
+                        spideyBlueDark: '#0B1326',
+                        spiderBlack: '#0A0A0D',
+                        spiderCard: '#12151E',
+                        spiderBorder: '#232A3D',
+                        webWhite: '#F0F4F8'
+                    },
+
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #0A0A0D;
+            color: #F0F4F8;
+
+            background-image:
+                radial-gradient(
+                    circle at 50% 20%,
+                    rgba(230, 36, 41, 0.15) 0%,
+                    transparent 50%
+                ),
+                radial-gradient(
+                    circle at 80% 80%,
+                    rgba(0, 85, 165, 0.12) 0%,
+                    transparent 50%
+                ),
+                linear-gradient(
+                    to right,
+                    rgba(255, 255, 255, 0.03) 1px,
+                    transparent 1px
+                ),
+                linear-gradient(
+                    to bottom,
+                    rgba(255, 255, 255, 0.03) 1px,
+                    transparent 1px
+                );
+
+            background-size:
+                100% 100%,
+                100% 100%,
+                30px 30px,
+                30px 30px;
+        }
+
+        .spidey-card {
+            background: rgba(18, 21, 30, 0.9);
+            border: 1px solid #232A3D;
+            border-radius: 1rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .spidey-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(
+                90deg,
+                #E62429,
+                #0055A5
+            );
+            opacity: 0.6;
+        }
+
+        .spidey-card:hover {
+            border-color: #E62429;
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px -10px rgba(230, 36, 41, 0.3);
+        }
+
+        .btn-spidey-primary {
+            background: linear-gradient(
+                135deg,
+                #E62429 0%,
+                #B31217 100%
+            );
+
+            color: white;
+
+            box-shadow:
+                0 4px 15px rgba(230, 36, 41, 0.4);
+
+            transition: all 0.25s ease;
+        }
+
+        .btn-spidey-primary:hover {
+            background: linear-gradient(
+                135deg,
+                #FF2E34 0%,
+                #C9141A 100%
+            );
+
+            box-shadow:
+                0 6px 20px rgba(230, 36, 41, 0.6);
+
+            transform: translateY(-2px);
+        }
+
+        .nav-link {
+            position: relative;
+            transition: color 0.2s ease;
+        }
+
+        .nav-link.active {
+            color: #E62429;
+            font-weight: 700;
+        }
+
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: #E62429;
+            border-radius: 99px;
+            box-shadow: 0 0 8px #E62429;
+        }
+
+        .spider-avatar-frame {
+            border: 3px solid #E62429;
+
+            box-shadow:
+                0 0 25px rgba(230, 36, 41, 0.5),
+                inset 0 0 15px rgba(0, 85, 165, 0.5);
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0A0A0D;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #232A3D;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #E62429;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen flex flex-col font-sans antialiased">
+
+    <!-- HEADIR -->
+    <header class="sticky top-0 z-40 bg-spiderBlack/90 backdrop-blur-md border-b border-spiderBorder">
+
+        <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+
+            <!-- FOR LUGU -->
+            <a href="#"
+               onclick="navigateTo('home')"
+               class="font-display text-2xl font-black tracking-wider flex items-center gap-2.5 text-white">
+
+                <div class="w-9 h-9 rounded-full bg-spideyRed flex items-center justify-center text-white shadow-lg">
+                    <i class="fa-solid fa-spider text-lg"></i>
+                </div>
+
+                <span>
+                    Tech
+                    <span class="text-spideyRed">likeLee</span>
+                </span>
+
+            </a>
+
+            <!-- Nav -->
+            <nav class="hidden md:flex items-center gap-8 font-medium text-sm text-zinc-300">
+
+                <button onclick="navigateTo('home')"
+                        id="nav-home"
+                        class="nav-link hover:text-white py-1">
+                    Home
+                </button>
+
+                <button onclick="navigateTo('about')"
+                        id="nav-about"
+                        class="nav-link hover:text-white py-1">
+                    About Me
+                </button>
+
+                <button onclick="navigateTo('portfolio')"
+                        id="nav-portfolio"
+                        class="nav-link hover:text-white py-1">
+                    Portfolio
+                </button>
+
+                <button onclick="navigateTo('gallery')"
+                        id="nav-gallery"
+                        class="nav-link hover:text-white py-1">
+                    Gallery
+                </button>
+
+                <button onclick="navigateTo('contact')"
+                        id="nav-contact"
+                        class="nav-link hover:text-white py-1">
+                    Contact
+                </button>
+
+            </nav>
+
+            <!--Minu -->
+            <button id="menu-btn"
+                    class="md:hidden text-2xl text-zinc-300 hover:text-spideyRed">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+        </div>
+
+        <div id="mobile-menu"
+             class="hidden md:hidden bg-spiderCard border-b border-spiderBorder px-6 py-4 flex flex-col gap-3 text-zinc-300 font-semibold">
+
+            <button onclick="navigateTo('home'); toggleMobileMenu();"
+                    class="text-left py-2 hover:text-spideyRed">
+                <i class="fa-solid fa-house w-6 text-spideyRed"></i>
+                Home
+            </button>
+
+            <button onclick="showSection('about'); toggleMobileMenu();"
+                    class="text-left py-2 hover:text-spideyRed">
+                <i class="fa-solid fa-user w-6 text-spideyRed"></i>
+                About Me
+            </button>
+
+            <button onclick="navigateTo('portfolio'); toggleMobileMenu();"
+                    class="text-left py-2 hover:text-spideyRed">
+                <i class="fa-solid fa-briefcase w-6 text-spideyRed"></i>
+                Portfolio
+            </button>
+
+            <button onclick="navigateTo('gallery'); toggleMobileMenu();"
+                    class="text-left py-2 hover:text-spideyRed">
+                <i class="fa-solid fa-images w-6 text-spideyRed"></i>
+                Gallery
+            </button>
+
+            <button onclick="navigateTo('contact'); toggleMobileMenu();"
+                    class="text-left py-2 hover:text-spideyRed">
+                <i class="fa-solid fa-envelope w-6 text-spideyRed"></i>
+                Contact
+            </button>
+
+        </div>
+
+    </header>
+
+    <!-- MIN CUNTINT -->
+    <main class="flex-grow max-w-6xl w-full mx-auto px-6 py-10">
+
+        <!-- HOM -->
+        <section id="page-home"
+                 class="page-content block">
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center min-h-[65vh]">
+
+                <!-- Hom T -->
+                <div class="lg:col-span-7 space-y-6">
+
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold tracking-wider uppercase bg-spideyRed/10 text-spideyRed border border-spideyRed/30">
+
+                        <i class="fa-solid fa-spider"></i>
+
+                        Welcome To My Website
+
+                    </div>
+
+                    <h1 class="font-display text-4xl sm:text-6xl font-black text-white leading-tight">
+
+                        With Great 
+                        <br>
+
+                        Skills Comes
+                        <br>
+
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-spideyRed via-red-400 to-spideyBlue">
+                            Great Possibilities.
+                        </span>
+
+                    </h1>
+
+                    <p class="text-zinc-300 text-base sm:text-lg leading-relaxed max-w-xl">
+
+                        I’m interested in technology, design, and digital creativity. I enjoy learning new skills, exploring different ideas, and creating simple digital projects. I’m always looking for ways to improve my skills and gain experience through every project I work on.
+
+
+                    </p>
+
+                    <div class="pt-4 flex flex-wrap gap-4">
+
+                        <button onclick="navigateTo('portfolio')"
+                                class="btn-spidey-primary font-extrabold px-8 py-3.5 rounded-xl text-sm flex items-center gap-2">
+
+                            View Portfolio
+
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+
+                        </button>
+
+                        <button onclick="navigateTo('contact')"
+                                class="px-8 py-3.5 rounded-xl font-bold text-sm text-white bg-spideyBlueDark/80 border border-spideyBlue hover:border-spideyRed transition">
+
+                            Contact Me
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <!-- Prupayl Pek -->
+                <div class="lg:col-span-5 flex items-center justify-center">
+
+                    <div class="relative">
+
+                        <div class="w-64 h-64 sm:w-72 sm:h-72 rounded-full overflow-hidden spider-avatar-frame bg-spiderCard">
+
+                            <img id="hero-profile-img"
+                                 src="PROFILE1.jpg"
+                                 alt="My Profile Picture"
+                                 class="w-full h-full object-cover">
+
+                        </div>
+
+                        <div class="absolute -bottom-2 -right-2 w-12 h-12 bg-spideyRed text-white rounded-full border-2 border-spiderBlack flex items-center justify-center text-xl">
+
+                            <i class="fa-solid fa-user"></i>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- BOUT -->
+        <section id="page-about"
+                 class="page-content hidden">
+
+            <div class="space-y-3 mb-10">
+
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-spideyBlue/20 text-blue-400 border border-spideyBlue/40">
+
+                    <i class="fa-solid fa-user"></i>
+
+                    About Me
+
+                </div>
+
+                <h1 class="font-display text-3xl sm:text-5xl font-black text-white">
+                    About Me
+                </h1>
+
+                <p class="text-zinc-400">
+                    Get to know me, my interests, and the skills I’m developing.
+                </p>
+
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+                <!-- Pirsunull Infu -->
+                <div class="spidey-card p-8">
+
+                    <h2 class="font-display text-xl font-bold text-white mb-4 flex items-center gap-2.5">
+
+                        <i class="fa-solid fa-user text-spideyRed"></i>
+
+                        Who I Am
+
+                    </h2>
+
+                    <div class="space-y-4 text-zinc-300 text-sm leading-relaxed">
+
+                        <p>
+                            Hi! I’m a college student who enjoys discovering new things, especially when it comes to technology and digital creativity. I’ve always been curious about how websites, applications, and digital designs come together, which encouraged me to explore programming and web development.
+                        </p>
+
+                        <p>
+                            What I enjoy most is taking an idea and slowly turning it into something I can actually see and use. Sometimes it takes a lot of trial and error, but I see that as part of learning. Every project I work on helps me become more confident, improve my skills, and understand what I enjoy doing.
+
+I’m still learning and figuring out where my skills can take me, but I’m excited to keep exploring, creating, and growing along the way.
+                        </p>
+
+                        <p class="border-l-2 border-spideyRed pl-3 text-zinc-200 italic font-medium">
+
+                            “Learn with curiosity, create with purpose, grow through every challenge, and keep moving forward.”
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <!-- Skells -->
+                <div class="spidey-card p-8">
+
+                    <h2 class="font-display text-xl font-bold text-white mb-4 flex items-center gap-2.5">
+
+                        <i class="fa-solid fa-code text-blue-400"></i>
+
+                        My Skills
+
+                    </h2>
+
+                    <p class="text-zinc-400 text-sm mb-6">
+
+                        Here are some of the technologies and skills
+                        that I am currently learning:
+
+                    </p>
+
+                    <div class="flex flex-wrap gap-2.5">
+
+                        <span class="px-3.5 py-1.5 rounded-lg text-xs font-bold bg-spideyRed/10 text-red-300 border border-spideyRed/30 flex items-center gap-1.5">
+
+                            <i class="fa-brands fa-html5 text-spideyRed"></i>
+
+                            HTML & CSS
+
+                        </span>
+
+                        <span class="px-3.5 py-1.5 rounded-lg text-xs font-bold bg-yellow-500/10 text-yellow-300 border border-yellow-500/30 flex items-center gap-1.5">
+
+                            <i class="fa-brands fa-js text-yellow-400"></i>
+
+                            JavaScript
+
+                        </span>
+
+                        <span class="px-3.5 py-1.5 rounded-lg text-xs font-bold bg-spideyBlue/20 text-blue-300 border border-spideyBlue/40 flex items-center gap-1.5">
+
+                            <i class="fa-solid fa-pen-nib text-spideyBlue"></i>
+
+                            UI/UX Design
+
+                        </span>
+
+                        <span class="px-3.5 py-1.5 rounded-lg text-xs font-bold bg-red-900/20 text-red-200 border border-red-800/40 flex items-center gap-1.5">
+
+                            <i class="fa-brands fa-java text-red-400"></i>
+
+                            Java
+
+                        </span>
+
+                        <span class="px-3.5 py-1.5 rounded-lg text-xs font-bold bg-cyan-900/20 text-cyan-200 border border-cyan-800/40 flex items-center gap-1.5">
+
+                            <i class="fa-solid fa-mobile-screen text-cyan-400"></i>
+
+                            Responsive Design
+
+                        </span>
+
+                        <span class="px-3.5 py-1.5 rounded-lg text-xs font-bold bg-purple-900/20 text-purple-200 border border-purple-800/40 flex items-center gap-1.5">
+
+                            <i class="fa-solid fa-laptop-code text-purple-400"></i>
+
+                            Web Development
+
+                        </span>
+
+                        <span class="px-3.5 py-1.5 rounded-lg text-xs font-bold bg-orange-900/20 text-orange-200 border border-orange-800/40 flex items-center gap-1.5">
+
+                            <i class="fa-brands fa-git-alt text-orange-400"></i>
+
+                            Git & GitHub
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- Purtpolyu -->
+
+<section id="page-portfolio"
+         class="page-content hidden">
+
+<div class="space-y-3 mb-10">
+
+    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-spideyRed/10 text-spideyRed border border-spideyRed/30">
+
+        <i class="fa-solid fa-briefcase"></i>
+
+        My Work
+
+    </div>
+
+    <h1 class="font-display text-3xl sm:text-5xl font-black text-white">
+
+        My Projects
+
+    </h1>
+
+    <p class="text-zinc-400">
+
+        Here are some projects I have worked on
+        as a Computer Science student.
+
+    </p>
+
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+    <!-- Pro 1 -->
+    <div class="spidey-card flex flex-col justify-between group">
+
+        <div>
+
+            <div class="h-48 bg-spideyBlueDark/80 flex items-center justify-center relative border-b border-spiderBorder">
+
+                <i class="fa-solid fa-calendar-check text-6xl text-spideyBlue group-hover:text-spideyRed transition"></i>
+
+                <span class="absolute top-3 right-3 bg-spiderBlack text-xs px-2.5 py-1 rounded-md text-spideyRed border border-spideyRed/40 font-bold">
+
+                    Java
+
+                </span>
+
+            </div>
+
+            <div class="p-6 space-y-3">
+
+                <h3 class="font-display text-xl font-bold text-white">
+
+                    Student Attendance System
+
+                </h3>
+
+                <p class="text-zinc-400 text-sm leading-relaxed">
+
+                    A simple attendance system designed to
+                    record student time-in, time-out, and
+                    attendance records.
+
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="p-6 pt-0">
+
+            <button onclick="openProjectModal(
+                'Student Attendance System',
+                'A Java-based attendance system created to record student attendance, time-in, time-out, late records, and basic attendance reports.',
+                'Java, MySQL, Java Swing'
+            )"
+            class="w-full py-2.5 rounded-xl text-xs font-bold border border-spideyRed/40 text-white hover:bg-spideyRed transition">
+
+                View Details
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- Pro 2 -->
+    <div class="spidey-card flex flex-col justify-between group">
+
+        <div>
+
+            <div class="h-48 bg-spideyBlueDark/80 flex items-center justify-center relative border-b border-spiderBorder">
+
+                <i class="fa-solid fa-book-open text-6xl text-spideyBlue group-hover:text-spideyRed transition"></i>
+
+                <span class="absolute top-3 right-3 bg-spiderBlack text-xs px-2.5 py-1 rounded-md text-spideyRed border border-spideyRed/40 font-bold">
+
+                    Database
+
+                </span>
+
+            </div>
+
+            <div class="p-6 space-y-3">
+
+                <h3 class="font-display text-xl font-bold text-white">
+
+                    Library Management System
+
+                </h3>
+
+                <p class="text-zinc-400 text-sm leading-relaxed">
+
+                    A basic system for managing books,
+                    student borrowers, and borrowing
+                    records in a school library.
+
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="p-6 pt-0">
+
+            <button onclick="openProjectModal(
+                'Library Management System',
+                'A simple library management system that allows users to organize book records, student borrowers, and borrowing and returning transactions.',
+                'Java, MySQL, Database Management'
+            )"
+            class="w-full py-2.5 rounded-xl text-xs font-bold border border-spideyRed/40 text-white hover:bg-spideyRed transition">
+
+                View Details
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- Pro 3 -->
+    <div class="spidey-card flex flex-col justify-between group">
+
+        <div>
+
+            <div class="h-48 bg-spideyBlueDark/80 flex items-center justify-center relative border-b border-spiderBorder">
+
+                <i class="fa-solid fa-wallet text-6xl text-spideyBlue group-hover:text-spideyRed transition"></i>
+
+                <span class="absolute top-3 right-3 bg-spiderBlack text-xs px-2.5 py-1 rounded-md text-spideyRed border border-spideyRed/40 font-bold">
+
+                    Web App
+
+                </span>
+
+            </div>
+
+            <div class="p-6 space-y-3">
+
+                <h3 class="font-display text-xl font-bold text-white">
+
+                    Personal Expense Tracker
+
+                </h3>
+
+                <p class="text-zinc-400 text-sm leading-relaxed">
+
+                    A simple web application for recording
+                    daily expenses and keeping track of
+                    personal spending.
+
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="p-6 pt-0">
+
+            <button onclick="openProjectModal(
+                'Personal Expense Tracker',
+                'A simple web application that allows users to record expenses, organize spending by category, and view their total expenses.',
+                'HTML, CSS, JavaScript'
+            )"
+            class="w-full py-2.5 rounded-xl text-xs font-bold border border-spideyRed/40 text-white hover:bg-spideyRed transition">
+
+                View Details
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+        <!-- Gahliri -->
+        <section id="page-gallery"
+                 class="page-content hidden">
+
+            <div class="space-y-2 mb-8">
+
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-spideyRed/10 text-spideyRed border border-spideyRed/30">
+
+                    <i class="fa-solid fa-camera"></i>
+
+                    My Photos
+
+                </div>
+
+                <h1 class="font-display text-3xl sm:text-5xl font-black text-white">
+
+                    Photo Gallery
+
+                </h1>
+
+                <p class="text-zinc-400">
+
+                    Some photos and memories that I want to share.
+
+                </p>
+
+            </div>
+
+            <!-- Gahliri pek -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                <!-- Pt 1 -->
+                <div class="spidey-card cursor-pointer group"
+                     onclick="openLightbox(0)">
+
+                    <div class="relative aspect-square overflow-hidden bg-spiderBlack">
+
+                        <img id="gallery-img-0"
+                             src="gallery1.jpg"
+                             alt="Gallery Photo 1"
+                             class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end justify-between p-4">
+
+                            <span class="text-white text-xs font-bold">
+
+                                <i class="fa-solid fa-expand text-spideyRed"></i>
+
+                                View Photo
+
+                            </span>
+
+                            <span class="text-spideyRed text-xs font-bold"
+                                  id="gallery-cap-0">
+
+                                My Photo 1
+
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Pt 2 -->
+                <div class="spidey-card cursor-pointer group"
+                     onclick="openLightbox(1)">
+
+                    <div class="relative aspect-square overflow-hidden bg-spiderBlack">
+
+                        <img id="gallery-img-1"
+                             src="gallery2.jpg"
+                             alt="Gallery Photo 2"
+                             class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end justify-between p-4">
+
+                            <span class="text-white text-xs font-bold">
+
+                                <i class="fa-solid fa-expand text-spideyRed"></i>
+
+                                View Photo
+
+                            </span>
+
+                            <span class="text-spideyRed text-xs font-bold"
+                                  id="gallery-cap-1">
+
+                                My Photo 2
+
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Pt 3 -->
+                <div class="spidey-card cursor-pointer group"
+                     onclick="openLightbox(2)">
+
+                    <div class="relative aspect-square overflow-hidden bg-spiderBlack">
+
+                        <img id="gallery-img-2"
+                             src="gallery3.jpg"
+                             alt="Gallery Photo 3"
+                             class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end justify-between p-4">
+
+                            <span class="text-white text-xs font-bold">
+
+                                <i class="fa-solid fa-expand text-spideyRed"></i>
+
+                                View Photo
+
+                            </span>
+
+                            <span class="text-spideyRed text-xs font-bold"
+                                  id="gallery-cap-2">
+
+                                My Photo 3
+
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Pt 4 -->
+                <div class="spidey-card cursor-pointer group"
+                     onclick="openLightbox(3)">
+
+                    <div class="relative aspect-square overflow-hidden bg-spiderBlack">
+
+                        <img id="gallery-img-3"
+                             src="gallery4.jpg"
+                             alt="Gallery Photo 4"
+                             class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end justify-between p-4">
+
+                            <span class="text-white text-xs font-bold">
+
+                                <i class="fa-solid fa-expand text-spideyRed"></i>
+
+                                View Photo
+
+                            </span>
+
+                            <span class="text-spideyRed text-xs font-bold"
+                                  id="gallery-cap-3">
+
+                                My Photo 4
+
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Pt 5 -->
+                <div class="spidey-card cursor-pointer group"
+                     onclick="openLightbox(4)">
+
+                    <div class="relative aspect-square overflow-hidden bg-spiderBlack">
+
+                        <img id="gallery-img-4"
+                             src="gallery5.jpg"
+                             alt="Gallery Photo 5"
+                             class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end justify-between p-4">
+
+                            <span class="text-white text-xs font-bold">
+
+                                <i class="fa-solid fa-expand text-spideyRed"></i>
+
+                                View Photo
+
+                            </span>
+
+                            <span class="text-spideyRed text-xs font-bold"
+                                  id="gallery-cap-4">
+
+                                My Photo 5
+
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- kuntak -->
+        <section id="page-contact"
+                 class="page-content hidden">
+
+            <div class="max-w-2xl mx-auto space-y-8">
+
+                <div class="text-center space-y-3">
+
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-spideyRed/10 text-spideyRed border border-spideyRed/30">
+
+                        <i class="fa-solid fa-paper-plane"></i>
+
+                        Contact
+
+                    </div>
+
+                    <h1 class="font-display text-3xl sm:text-5xl font-black text-white">
+
+                        Get In Touch
+
+                    </h1>
+
+                    <p class="text-zinc-400">
+
+                        If you have a question or an idea,
+                        feel free to send me a message.
+
+                    </p>
+
+                </div>
+
+                <div class="spidey-card p-8 sm:p-10">
+
+                    <form id="contact-form"
+                          onsubmit="handleFormSubmit(event)"
+                          class="space-y-5">
+
+                        <div>
+
+                            <label class="block text-xs font-bold text-zinc-300 mb-2 uppercase">
+                                Your Name
+                            </label>
+
+                            <input type="text"
+                                   id="form-name"
+                                   required
+                                   placeholder="Enter your name"
+                                   class="w-full bg-spiderBlack border border-spiderBorder rounded-xl px-4 py-3 text-white focus:outline-none focus:border-spideyRed">
+
+                        </div>
+
+                        <div>
+
+                            <label class="block text-xs font-bold text-zinc-300 mb-2 uppercase">
+                                Your Email
+                            </label>
+
+                            <input type="email"
+                                   id="form-email"
+                                   required
+                                   placeholder="Enter your email"
+                                   class="w-full bg-spiderBlack border border-spiderBorder rounded-xl px-4 py-3 text-white focus:outline-none focus:border-spideyRed">
+
+                        </div>
+
+                        <div>
+
+                            <label class="block text-xs font-bold text-zinc-300 mb-2 uppercase">
+                                Subject
+                            </label>
+
+                            <input type="text"
+                                   id="form-subject"
+                                   required
+                                   placeholder="Enter your subject"
+                                   class="w-full bg-spiderBlack border border-spiderBorder rounded-xl px-4 py-3 text-white focus:outline-none focus:border-spideyRed">
+
+                        </div>
+
+                        <div>
+
+                            <label class="block text-xs font-bold text-zinc-300 mb-2 uppercase">
+                                Message
+                            </label>
+
+                            <textarea id="form-message"
+                                      rows="4"
+                                      required
+                                      placeholder="Type your message here..."
+                                      class="w-full bg-spiderBlack border border-spiderBorder rounded-xl px-4 py-3 text-white focus:outline-none focus:border-spideyRed"></textarea>
+
+                        </div>
+
+                        <button type="submit"
+                                class="w-full btn-spidey-primary py-3.5 rounded-xl font-black text-sm uppercase">
+
+                            Send Message
+
+                        </button>
+
+                    </form>
+
+                    <!-- saksis misej -->
+                    <div id="form-success"
+                         class="hidden text-center py-8 space-y-4">
+
+                        <div class="w-16 h-16 bg-spideyRed/20 border-2 border-spideyRed text-spideyRed rounded-full flex items-center justify-center mx-auto text-3xl">
+
+                            <i class="fa-solid fa-spider"></i>
+
+                        </div>
+
+                        <h3 class="font-display text-2xl font-bold text-white">
+
+                            Message Sent!
+
+                        </h3>
+
+                        <p class="text-zinc-300 text-sm">
+
+								Thanks for reaching out! I appreciate your message and will get back to you as soon as I can.
+                        </p>
+
+                        <button onclick="resetContactForm()"
+                                class="mt-4 px-6 py-2.5 rounded-xl border border-spideyRed text-xs font-bold hover:bg-spideyRed text-white transition">
+
+                            Send Another Message
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- imegh ligthbax -->
+    <div id="lightbox-modal"
+         class="fixed inset-0 z-50 bg-black/95 backdrop-blur-md hidden flex items-center justify-center p-4">
+
+        <button onclick="closeLightbox()"
+                class="absolute top-6 right-6 text-zinc-400 hover:text-spideyRed text-3xl">
+
+            <i class="fa-solid fa-xmark"></i>
+
+        </button>
+
+        <div class="max-w-3xl w-full text-center space-y-4">
+
+            <img id="lightbox-img"
+                 src=""
+                 alt="Expanded Photo"
+                 class="max-h-[75vh] mx-auto rounded-xl border-2 border-spideyRed object-contain shadow-2xl">
+
+            <p id="lightbox-caption"
+               class="text-spideyRed font-bold text-sm">
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- mudal -->
+    <div id="project-modal"
+         class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden flex items-center justify-center p-4">
+
+        <div class="spidey-card max-w-md w-full p-6 sm:p-8 rounded-2xl relative space-y-4 border-spideyRed">
+
+            <button onclick="closeProjectModal()"
+                    class="absolute top-4 right-4 text-zinc-400 hover:text-spideyRed text-xl">
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+            <div class="w-10 h-10 rounded-full bg-spideyRed/20 flex items-center justify-center text-spideyRed">
+
+                <i class="fa-solid fa-spider"></i>
+
+            </div>
+
+            <h3 id="modal-title"
+                class="font-display text-xl font-bold text-white">
+            </h3>
+
+            <p id="modal-desc"
+               class="text-zinc-300 text-sm leading-relaxed">
+            </p>
+
+            <div class="pt-3 border-t border-spiderBorder">
+
+                <span class="text-xs uppercase text-spideyRed font-extrabold block mb-1">
+                    Technologies
+                </span>
+
+                <span id="modal-tech"
+                      class="text-xs text-zinc-300 font-mono">
+                </span>
+
+            </div>
+
+            <button onclick="closeProjectModal()"
+                    class="w-full btn-spidey-primary py-2.5 rounded-xl font-bold text-xs">
+
+                Close
+
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- PAA -->
+    <footer class="border-t border-spiderBorder py-8 text-center text-xs text-zinc-500">
+
+        <p>
+            © 2026 Jiovhany Lie Garcia.
+            Where Ideas Meet Technology.
+        </p>
+		
+
+    </footer>
+
+    <!-- JS -->
+    <script>
+
+        // Change between the different pages
+        function navigateTo(pageId) {
+
+            const pages =
+                document.querySelectorAll('.page-content');
+
+            pages.forEach(page => {
+                page.classList.add('hidden');
+            });
+
+            const selectedPage =
+                document.getElementById(`page-${pageId}`);
+
+            if (selectedPage) {
+                selectedPage.classList.remove('hidden');
+            }
+
+            const navLinks =
+                document.querySelectorAll('.nav-link');
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+            });
+
+            const selectedNav =
+                document.getElementById(`nav-${pageId}`);
+
+            if (selectedNav) {
+                selectedNav.classList.add('active');
+            }
+
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Open and close the mobile navigation
+        function toggleMobileMenu() {
+
+            const mobileMenu =
+                document.getElementById('mobile-menu');
+
+            mobileMenu.classList.toggle('hidden');
+        }
+
+        document
+            .getElementById('menu-btn')
+            .addEventListener(
+                'click',
+                toggleMobileMenu
+            );
+
+        // Show a gallery picture in full size
+        function openLightbox(index) {
+
+            const image =
+                document.getElementById(
+                    `gallery-img-${index}`
+                );
+
+            const caption =
+                document.getElementById(
+                    `gallery-cap-${index}`
+                );
+
+            if (!image) return;
+
+            const modal =
+                document.getElementById(
+                    'lightbox-modal'
+                );
+
+            const lightboxImage =
+                document.getElementById(
+                    'lightbox-img'
+                );
+
+            const lightboxCaption =
+                document.getElementById(
+                    'lightbox-caption'
+                );
+
+            lightboxImage.src =
+                image.src;
+
+            lightboxCaption.innerText =
+                caption
+                    ? caption.innerText
+                    : 'Gallery Photo';
+
+            modal.classList.remove('hidden');
+        }
+
+        function closeLightbox() {
+
+            document
+                .getElementById('lightbox-modal')
+                .classList.add('hidden');
+        }
+
+        // Show project information
+        function openProjectModal(
+            title,
+            description,
+            technology
+        ) {
+
+            document.getElementById(
+                'modal-title'
+            ).innerText = title;
+
+            document.getElementById(
+                'modal-desc'
+            ).innerText = description;
+
+            document.getElementById(
+                'modal-tech'
+            ).innerText = technology;
+
+            document
+                .getElementById('project-modal')
+                .classList.remove('hidden');
+        }
+
+        function closeProjectModal() {
+
+            document
+                .getElementById('project-modal')
+                .classList.add('hidden');
+        }
+
+        // Show the message sent screen
+        function handleFormSubmit(event) {
+
+            event.preventDefault();
+
+            document
+                .getElementById('contact-form')
+                .classList.add('hidden');
+
+            document
+                .getElementById('form-success')
+                .classList.remove('hidden');
+        }
+
+        // Clear the form and show it again
+        function resetContactForm() {
+
+            document
+                .getElementById('contact-form')
+                .reset();
+
+            document
+                .getElementById('contact-form')
+                .classList.remove('hidden');
+
+            document
+                .getElementById('form-success')
+                .classList.add('hidden');
+        }
+
+        // Open Home page when the website starts
+        window.addEventListener(
+            'DOMContentLoaded',
+            function () {
+                navigateTo('home');
+            }
+        );
+
+    </script>
+
+</body>
+</html>
